@@ -16,7 +16,7 @@ using namespace std;
 // since it'll be difficult (allocation of multidimensional array in heap), we instead allocate this
 // in stack (even if stack is limited only)
 // we can actually store these in txt form and parse it. (but, using fstream library)
-string elements[][10] = {
+const string elements[][10] = {
 	{"Ac", "Actinium", "227", "89", "138", "195", "1.1", "36", "1050", "3200"},
 	{"Al", "Aluminum", "26.98", "13", "14", "125", "1.61", "27", "660.32", "2519"},
 	{"Am", "Americium", "243", "95", "148", "175", "1.3", "14", "1,176", "2011"},
@@ -144,32 +144,21 @@ char uflag = 'n';
 int target = 1;
 
 // check if array is needed to be sorted
-bool setsort_flag(char flag) {
+void set_flag(char flag) {
+	// already the flag
 	if (flag != uflag) {
+		uflag = flag;
 		switch (flag) {
-			case 's':
-				// sort by symbol
-				target = 0;
-				uflag = 's';
-				return 1;
 			case 'n':
-				// sort by name
 				target = 1;
-				uflag = 'n';
-				return 1;
+				break;
 			case 'a':
-				// sort by atomic number
 				target = 3;
-				uflag = 'a';
-				return 1;
-			default:
-				cout << "Value entered \'" << flag << "\' is not in list... Using value : \'n\'" << endl;
-				target = 1;
-				uflag = 'n';
-				return 1;
+				break;
+			case 's':
+				target = 0;
+				break;
 		}
-	} else {
-		return 0;
 	}
 }
 
@@ -229,41 +218,16 @@ void interpret_index(int x) {
 	}
 }
 
-// sorting algorithm (needed for the searching algorithm)
-void sort(char flag) {
-	if (setsort_flag(flag)) {
-		for (int i = 0; i < 118; i++) {
-			for (int j = i + 1; j < 118; j++) {
-				if (elements[sequence[i]][target] > elements[sequence[j]][target]) {
-					// switch
-					sequence[i] += sequence[j];
-					sequence[j] = sequence[i] - sequence[j];
-					sequence[i] -= sequence[j];
-				}
-			}
-		}
-	}
-}
-
 // An algorithm that searches for element in index above
-int search(string elem, int i, int f) {
-	int mid;
-	if (sequence[i] == sequence[f]) {
-		if (elem == elements[sequence[i]][target]) {
-			return sequence[i];
-		} else {
-			return -1;
-		}
-	} else {
-		mid = (i + f)/2;
-		if (elem == elements[sequence[mid]][target]) {
-			return sequence[mid];
-		} else if (elem < elements[sequence[mid]][target]) {
-			return search(elem, i, mid - 1);
-		} else {
-			return search(elem, mid + 1, f);
+int search(string elem) {
+	// use linear search
+	for (int i = 0; i < 118; i++) {
+		if (elements[i][target] == elem) {
+			return i;
 		}
 	}
+
+	return -1;
 }
 
 // convert string (for searching purposes) into searchable format for name

@@ -125,16 +125,16 @@ void interface_1() {
 		switch (type[0]) {
 			case 'a':
 				system("cls");
-				sort('a');
+				set_flag('a');
 				interface_anum();
 				break;
 			case 's':
-				sort('s');
+				set_flag('s');
 				system("cls");
 				interface_symb();
 				break;
 			case 'n':
-				sort('n');
+				set_flag('n');
 				system("cls");
 				interface_name();
 				break;
@@ -143,7 +143,7 @@ void interface_1() {
 				delete sequence;
 				exit(0);
 			default:
-				sort('n');
+				set_flag('n');
 				system("cls");
 				error_in_flag = "[error] Input not in selection, using type \'n\' instead";
 				interface_name();
@@ -210,7 +210,7 @@ bool filter_search(string srch) {
 	}
 
 	// search
-	interpret_index(search(srch, 0, 118));
+	interpret_index(search(srch));
 //	cout << "Press enter to continue..." << endl;
 //	system("read NULL");
 	system("pause");
