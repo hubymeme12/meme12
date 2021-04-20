@@ -137,8 +137,6 @@ const string elements[][10] = {
     {"Zr", "Zirconium", "91.22", "40", "51", "155", "1.33", "4", "1,855", "4,409"}
 };
 
-// sequence of index of elements (sorted depending on uflag)
-int *sequence = new int[118];
 // uflag is the flag that determines the current sort of the arrays in elements (initially sorted by name).
 char uflag = 'n';
 int target = 1;
@@ -159,13 +157,6 @@ void set_flag(char flag) {
 				target = 0;
 				break;
 		}
-	}
-}
-
-// initial sort of elements
-void element_setup() {
-	for (int i = 0; i < 118; i++) {
-		sequence[i] = i;
 	}
 }
 
