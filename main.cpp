@@ -21,7 +21,6 @@ bool filter_search(string);		// for returning to interface1
 
 int main() {
 	// setup part
-	element_setup();
 	system("color F0");
 
 	// variables needed
@@ -139,8 +138,6 @@ void interface_1() {
 				interface_name();
 				break;
 			case 'e':
-				// free up memory allocation of sequence and exit.
-				delete sequence;
 				exit(0);
 			default:
 				set_flag('n');
