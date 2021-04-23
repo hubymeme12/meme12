@@ -235,7 +235,8 @@ string element::search_filterN(string out) {
 	string ret;
 	char inp[30] = {0};
 
-	cout << setw(70) << out << endl;
+	cout << setw(58) << out << endl;
+	cout << setw(50) << " ";
 	cin >> inp;
 
 	// check if it's within the range of alphabet
