@@ -12,12 +12,18 @@ int number_set[] = {2, 8, 18, 32, 32, 32, 32};
 string seq[] = {"1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p", "6f", "7d", "7f"};
 int maxim[] = {2, 2, 6, 2, 6, 2, 10, 6, 2, 10, 6, 2, 14, 10, 6, 2, 14, 10, 6, 14, 10, 14};
 
+class electro {
+	public:
+		void econfig(int);
+		int getPrincipal(int);
+		void interpretQuantumNumber(int);
+};
 
 // e-config anomalies (switch)
 // final electron configuration
 // I chose to hardcode some part since, remaking the whole algorithm up there is kinda mess  -hubert
 // e: number of electron in an atom
-void econfig(int e) {
+void electro::econfig(int e) {
 	// Where final electron config will be stored
 	string* config = new string;
 
@@ -126,7 +132,7 @@ void econfig(int e) {
 }
 
 // gets principal number of atom.
-int getPrincipal(int e) {
+int electro::getPrincipal(int e) {
 	for (int i = 0; i < 7; i++) {
 		// meaning, number_set[i] is bigger than number of electrons.
 		// e is e
@@ -138,7 +144,7 @@ int getPrincipal(int e) {
 	}
 }
 
-void interpretQuantumNumber(int e) {
+void electro::interpretQuantumNumber(int e) {
 	cout << "Principal quantum number(N) : " << e << endl;
 	cout << "Possible orbitals : ";
 
