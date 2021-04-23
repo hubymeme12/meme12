@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "elements.h"
 using namespace std;
 
@@ -25,7 +26,7 @@ class periodicConsole : public element {
 
 periodicConsole::periodicConsole() : element() {
 	ascii_art = "    ______ _                           _     _____  _      _   _                              \n   |  ____| |                         | |   |  __ \\(_)    | | (_)                             \n   | |__  | | ___ _ __ ___   ___ _ __ | |_  | |  | |_  ___| |_ _  ___  _ __   __ _ _ __ _   _ \n   |  __| | |/ _ \\ \'_ ` _ \\ / _ \\ \'_ \\| __| | |  | | |/ __| __| |/ _ \\| \'_ \\ / _` | \'__| | | |\n   | |____| |  __/ | | | | |  __/ | | | |_  | |__| | | (__| |_| | (_) | | | | (_| | |  | |_| |\n   |______|_|\\___|_| |_| |_|\\___|_| |_|\\__| |_____/|_|\\___|\\__|_|\\___/|_| |_|\\__,_|_|   \\__, |\n                                                                                         __/ |\n                                                                                        |___/ ";
-	by_atomic_num = "  ______     __        _______ ____  __  __ _____ _____   _   _ _    _ __  __   \n |  _ \\ \\   / /     /\\|__   __/ __ \\|  \\/  |_   _/ ____| | \\ | | |  | |  \\/  |  \n | |_) \\ \\_/ /     /  \\  | | | |  | | \\  / | | || |      |  \\| | |  | | \\  / |  \n |  _ < \\   /     / /\\ \\ | | | |  | | |\\/| | | || |      | . ` | |  | | |\\/| |  \n | |_) | | |     / ____ \\| | | |__| | |  | |_| || |____  | |\\  | |__| | |  | |_ \n |____/  |_|    /_/    \\_\\_|  \\____/|_|  |_|_____\\_____| |_| \\_|\\____/|_|  |_(_)";
+	by_atomic_num = "           ______     __        _______ ____  __  __ _____ _____   _   _ _    _ __  __   \n          |  _ \\ \\   / /     /\\|__   __/ __ \\|  \\/  |_   _/ ____| | \\ | | |  | |  \\/  |  \n          | |_) \\ \\_/ /     /  \\  | | | |  | | \\  / | | || |      |  \\| | |  | | \\  / |  \n          |  _ < \\   /     / /\\ \\ | | | |  | | |\\/| | | || |      | . ` | |  | | |\\/| |  \n          | |_) | | |     / ____ \\| | | |__| | |  | |_| || |____  | |\\  | |__| | |  | |_ \n          |____/  |_|    /_/    \\_\\_|  \\____/|_|  |_|_____\\_____| |_| \\_|\\____/|_|  |_(_)";
 	by_name = "  ______     __  _   _          __  __ ______ \n |  _ \\ \\   / / | \\ | |   /\\   |  \\/  |  ____|\n | |_) \\ \\_/ /  |  \\| |  /  \\  | \\  / | |__   \n |  _ < \\   /   | . ` | / /\\ \\ | |\\/| |  __|  \n | |_) | | |    | |\\  |/ ____ \\| |  | | |____ \n |____/  |_|    |_| \\_/_/    \\_\\_|  |_|______|";
 	by_symbol = "  ____           _____                 _           _ \n |  _ \\         / ____|               | |         | |\n | |_) |_   _  | (___  _   _ _ __ ___ | |__   ___ | |\n |  _ <| | | |  \\___ \\| | | | \'_ ` _ \\| \'_ \\ / _ \\| |\n | |_) | |_| |  ____) | |_| | | | | | | |_) | (_) | |\n |____/ \\__, | |_____/ \\__, |_| |_| |_|_.__/ \\___/|_|\n         __/ |          __/ |                        \n        |___/          |___/                         ";
 }
@@ -49,16 +50,16 @@ void periodicConsole::console_app() {
 //	system("read NULL");
 
 	display_ascii();
-	cout << "Before, searching for information about the element you want to search, we first need to display" << endl;
-	cout << "some DETAILED instructions on how to use the program and some information about developers. (You" << endl;
-	cout << "can skip the instruction if you want to by chosing \'n\')" << endl;
+	cout << setw(99) << "Before, searching for information about the element you want to search, we first need to display" << endl;
+	cout << setw(99) << "some DETAILED instructions on how to use the program and some information about developers. (You" << endl;
+	cout << setw(77) << "can skip the instruction if you want to by chosing \'n\')" << endl << endl;
 
-	cout << "Options :" << endl;
-	cout << "  [y] (yes) Display instruction" << endl;
-	cout << "  [n] (no) I have already read the instruction" << endl << endl;
+	cout << "   Options :" << endl;
+	cout << "     [y] (yes) Display instruction" << endl;
+	cout << "     [n] (no) I have already read the instruction" << endl << endl;
 
 	while (1) {
-		cout << "Display instruction? [y/n] : ";
+		cout << "   Display instruction? [y/n] : ";
 		cin >> reusable_char;
 
 		if (reusable_char[0] == 'y') {
@@ -78,12 +79,11 @@ void periodicConsole::display_ascii() {
 	system("cls");
 //	system("clear");
 	// I used spaces instead of tabs since most of tabs are adjusting depending on terminal setting
-	cout << "=================================================================================================" << endl;
+	cout << setw(100) << "=================================================================================================" << endl;
 	cout << ascii_art << endl << endl;
-	cout << "  By : Team 6" << endl;
-	cout << "  Created : Nov. 16-25 2020" << endl;
-	cout << "  Last updated : Nov. 28 2020" << endl << endl;
-	cout << "=================================================================================================" << endl << endl;
+	cout << setw(56) << "  By : Team 6" << endl;
+	cout << setw(63) << "  Created : Nov. 16-25 2020" << endl;
+	cout << setw(100) << "=================================================================================================" << endl << endl;
 }
 
 void periodicConsole::display_instruction() {
@@ -122,14 +122,15 @@ void periodicConsole::interface_1() {
 
 	while (true) {
 		display_ascii();
-		cout << "On this part, you will choose what type of searching the program will perform. Choose method below :" << endl;
-		cout << "    [a] Search by atomic number" << endl;
-		cout << "    [n] Search by name" << endl;
-		cout << "    [s] Search by symbol" << endl << endl;
+		cout << setw(101) << "On this part, you will choose what type of searching the program will perform. Choose method below" << endl;
+		cout << setw(64) << "[a] Search by atomic number" << endl;
+		cout << setw(64) << "[n] Search by name         " << endl;
+		cout << setw(64) << "[s] Search by symbol       " << endl << endl;
 
-		cout << "    [e] Exit progam" << endl << endl;
+		cout << setw(64) << "[e] Exit progam            " << endl << endl;
 
-		cout << "Search Type : ";
+		cout << setw(58) << "Search Type : " << endl;
+		cout << setw(50) << " ";
 		cin >> type;
 
 		// Different interfaces that will be used
@@ -168,11 +169,11 @@ void periodicConsole::interface_anum() {
 	while (breaker) {
 		system("cls");
 //		system("clear");
-		cout << "=================================================================================================" << endl;
+		cout << setw(100) << "=================================================================================================" << endl;
 		cout << by_atomic_num << endl << endl;
-		cout << " Enter: \'exit\' to go back on previous interface." << endl;
-		cout << "=================================================================================================" << endl;
-		atm_num = search_filterA("ENTER ATOMIC NUMBER : ");
+		cout << setw(70) << "Enter: \'exit\' to go back on previous interface." << endl;
+		cout << setw(100) << "=================================================================================================" << endl;
+		atm_num = search_filterA("ENTER ATOMIC NUMBER\n");
 
 		breaker = filter_search(atm_num);
 	}

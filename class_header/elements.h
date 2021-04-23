@@ -124,7 +124,7 @@ const string elements[][10] = {
 	{"Zr", "Zirconium", "91.22", "40", "51", "155", "1.33", "4", "1,855", "4,409"}
 };
 
-class element {
+class element : electro {
 	private:
 		// flag to check which search  method is currently used
 		char uflag;
@@ -179,7 +179,6 @@ void element::interpret_index(int x) {
 		cout << "[!] The element you searched isn\'t found" << endl;
 	} else {
 		system("cls");
-		// system("clear");
 		cout << "=================================================================================================" << endl;
 		// design setup
 		if (elements[x][0].size() == 2) {
@@ -236,7 +235,7 @@ string element::search_filterN(string out) {
 	string ret;
 	char inp[30] = {0};
 
-	cout << out;
+	cout << setw(70) << out << endl;
 	cin >> inp;
 
 	// check if it's within the range of alphabet
@@ -271,7 +270,8 @@ string element::search_filterN(string out) {
 string element::search_filterA(string out) {
 	string store;
 
-	cout << out;
+	cout << setw(60) << out << endl;
+	cout << setw(50) << " ";
 	cin >> store;
 
 	// input is a number
