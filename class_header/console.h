@@ -210,7 +210,7 @@ void periodicConsole::interface_name() {
 		cout << setw(75) << "Enter: \'exit\' to go back on previous interface." << endl;
 		cout << setw(100) << "=================================================================================================" << endl;
 		cout << error_in_flag << endl;
-		name = search_filterN("NAME OF ATOM  \n");
+		name = search_filterN("NAME OF ATOM\n");
 
 		breaker = filter_search(name);
 	}

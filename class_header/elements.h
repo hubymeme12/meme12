@@ -1,5 +1,7 @@
 #include <iostream>
 #include <sstream>
+#include <iomanip>
+#include <conio.h>
 #include "electro.h"
 using namespace std;
 
@@ -232,40 +234,62 @@ int element::search(string elem) {
 }
 
 string element::search_filterN(string out) {
-	string ret;
-	char inp[30] = {0};
-
-	cout << setw(58) << out << endl;
+	// some adjusting display
+	cout << setw(51 + (out.size() / 2)) << out << endl;
 	cout << setw(50) << " ";
-	cin >> inp;
 
-	// check if it's within the range of alphabet
-	if (!(((inp[0] <= 'z') && (inp[0] >= 'a')) || (inp[0] <= 'Z') && (inp[0] >= 'A'))) {
-		cout << "[-] Error : invalid input detected!" << endl;
-		// get value again
-		return search_filterN(out);
-	}
+	// get input
+	char arr[100] = {0};
+	char tmp = 0;
+	int x = 0;
+	int m;
 
-	// first letter must be in upper case
-	if ((inp[0] <= 'z') && (inp[0] >= 'a')) {
-		// lower-case
-		inp[0] = inp[0] - 32;
-	}
-	ret += inp[0];
-
-	for (int i = 1; i < 30; i++) {
-		if (inp[i] == 0) {
+	// display input character by character and center it
+	while (true) {
+		tmp = getch();
+		if (tmp == '\r') {
+			cout << endl;
 			break;
-		} else {
-			// must be on lower-case
-			if ((inp[i] <= 'Z') && (inp[i] >= 'A')) {
-				// convert to lowercase
-				inp[i] = inp[i] + 32;
+		} else if (tmp == '\b') {
+			if (x == 0) {
+				// dont backspace
+			} else {
+				cout << "\b \b";
+				arr[x] = 0;
+				x--;				
 			}
-			ret += inp[i];
+		} else {
+			// check for middle
+			if (x % 2 != 1 && x > 1) {
+				m = x + 1;
+			} else {
+				m = x;
+			}
+
+			// loop for centering output
+			for (int i = 0; i < m; i++)
+				cout << "\b \b";
+
+			arr[x] = tmp;
+			cout << arr;
+			x++;
 		}
 	}
-	return ret;
+
+	// convert first letter as upper-case
+	// and the rest are lowercase
+	if ((arr[0] >= 'a') && (arr[0] <= 'z')) {
+		arr[0] -= 32;
+	}
+
+	for (int i = 1; i < x; i++) {
+		if ((arr[i] >= 'A') && (arr[i] <= 'Z')) {
+			arr[i] += 32;
+		}
+	}
+	out = arr;
+	cout << "Entered value : " << out << endl;
+	return out;
 }
 
 string element::search_filterA(string out) {
